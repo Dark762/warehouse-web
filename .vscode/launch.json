@@ -5,16 +5,17 @@
       "name": "Lunch Chrome",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}/src/app",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}/",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
         "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
-        "webpack:///./src/*": "${workspaceFolder}/src/*"
+        "webpack:///./src/*": "${workspaceFolder}/*"
       },
       "userDataDir": "${workspaceFolder}/.vscode/chrome",
       "runtimeArgs": [
-        "--disable-session-crashed-bubble"
+        "--disable-session-crashed-bubble",
+        "--preserve-symlinks"
       ]
     },
     {
@@ -23,11 +24,11 @@
       "request": "attach",
       "url": "http://localhost:4200",
       "port": 9222,
-      "webRoot": "${workspaceFolder}/src/app",
+      "webRoot": "${workspaceFolder}/",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
         "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
-        "webpack:///./src/*": "${workspaceFolder}/src/*"
+        "webpack:///./src/*": "${workspaceFolder}/*"
       }
     }
   ]

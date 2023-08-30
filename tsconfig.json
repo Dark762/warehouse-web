@@ -3,9 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "lib-App": [
-        "dist/lib-app"
-      ]
+     
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

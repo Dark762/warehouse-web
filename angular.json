@@ -18,6 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/warehouse",
+            "deleteOutputPath": true,
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -116,6 +117,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/Administration",
+            "deleteOutputPath": true,
             "index": "projects/Administration/src/index.html",
             "main": "projects/Administration/src/main.ts",
             "polyfills": [
@@ -235,6 +237,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/identity",
+            "deleteOutputPath": true,
             "index": "projects/identity/src/index.html",
             "main": "projects/identity/src/main.ts",
             "polyfills": [
@@ -313,39 +316,6 @@
               "projects/identity/src/styles.scss"
             ],
             "scripts": []
-          }
-        }
-      }
-    },
-    "lib-App": {
-      "projectType": "library",
-      "root": "shared/lib-app",
-      "sourceRoot": "shared/lib-app/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "shared/lib-app/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "shared/lib-app/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "shared/lib-app/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "shared/lib-app/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
           }
         }
       }
