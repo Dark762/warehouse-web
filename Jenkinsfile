@@ -1,5 +1,8 @@
 pipeline {
-    agent { any }
+    agent any
+    options {
+        skipDefaultCheckout true
+    }
     environment{
         MYHOME="Chennai"
     }
