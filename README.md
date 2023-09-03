@@ -25,3 +25,26 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
+docker build -t warehouse-image . 
+
+docker run --rm --name warehouse-container -d -p 3000:80 angular-app
+
+
+https://www.jenkins.io/doc/book/installing/docker/
+docker pull jenkins/jenkins:lts-jdk11
+docker network create jenkins
+
+  docker run --name jenkins-container --rm --detach ^
+  --privileged --network jenkins --network-alias jenkins-image ^
+  --env DOCKER_TLS_CERTDIR="" ^
+  --volume jenkins-docker-certs:/certs/client ^
+  --volume jenkins-data:/var/jenkins_home ^
+  --publish 2376:2376 ^
+  docker:dind
+
+  docker pull jenkins/jenkins:lts-jdk11
+
+  docker run --name jenkins-container -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
