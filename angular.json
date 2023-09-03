@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/warehouse",
+            "outputPath": "dist/",
             "deleteOutputPath": true,
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -26,10 +26,10 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "preserveSymlinks": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/web.config"
             ],
             "styles": [
               "src/styles.scss"
@@ -109,28 +109,28 @@
           "style": "scss"
         }
       },
-      "root": "projects/Administration",
-      "sourceRoot": "projects/Administration/src",
+      "root": "projects/administration",
+      "sourceRoot": "projects/administration/src",
       "prefix": "adm",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Administration",
+            "outputPath": "dist/administration",
             "deleteOutputPath": true,
-            "index": "projects/Administration/src/index.html",
-            "main": "projects/Administration/src/main.ts",
+            "index": "projects/administration/src/index.html",
+            "main": "projects/administration/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/Administration/tsconfig.app.json",
+            "tsConfig": "projects/administration/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/Administration/src/favicon.ico",
-              "projects/Administration/src/assets"
+              "projects/administration/src/favicon.ico",
+              "projects/administration/src/assets"
             ],
             "styles": [
-              "projects/Administration/src/styles.scss"
+              "projects/administration/src/styles.scss"
             ],
             "scripts": []
           },
@@ -165,10 +165,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Administration:build:production"
+              "browserTarget": "administration:build:production"
             },
             "development": {
-              "browserTarget": "Administration:build:development"
+              "browserTarget": "administration:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -176,7 +176,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Administration:build"
+            "browserTarget": "administration:build"
           }
         },
         "test": {
@@ -186,14 +186,14 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/Administration/tsconfig.spec.json",
+            "tsConfig": "projects/administration/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/Administration/src/favicon.ico",
-              "projects/Administration/src/assets"
+              "projects/administration/src/favicon.ico",
+              "projects/administration/src/assets"
             ],
             "styles": [
-              "projects/Administration/src/styles.scss"
+              "projects/administration/src/styles.scss"
             ],
             "scripts": []
           }

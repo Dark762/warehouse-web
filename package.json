@@ -4,11 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run build:dev && npm run ng serve",
-    "build:dev": "ng build --project=lib-App && ng build --project=Identity && ng build --project=Administration && ng build --project=warehouse",
-    "build:qa": "ng build --all",
+    "build:dev": "ng build --project=warehouse --configuration production && ng build --project=Administration --configuration production && ng build --project=Identity --configuration production",
+    "build:qa": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "start:lib": "ng build --project=lib-App",
     "start:app": "ng serve"
   },
   "private": true,
