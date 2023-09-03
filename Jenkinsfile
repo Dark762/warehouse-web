@@ -1,10 +1,10 @@
 pipeline {
-    agent { dockerfile true }
+    agent { any }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                sh 'docker pull jenkins/jenkins:lts-jdk11'
+                sh 'docker run --name jenkins-container -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11'
             }
         }
     }
