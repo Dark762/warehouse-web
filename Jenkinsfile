@@ -1,5 +1,8 @@
 pipeline {
     agent { any }
+    environment{
+        MYHOME="Chennai"
+    }
     stages {
         stage('Test') {
             steps {
