@@ -1,12 +1,9 @@
-/* groovylint-disable NestedBlockDepth */
 pipeline {
-    agent any
+    agent { dockerfile true}
     options {
         skipDefaultCheckout true
     }
     environment {
-        MYHOME = 'Chennai'
-        SERVER = ''
         GIT_SOLUTION = 'https://github.com/Dark762/warehouse-web.git'
         GIT_BRANCH = 'main'
         GIT_SOLUTION_CREDENTIALS = credentials('warehouse-github')
@@ -30,19 +27,6 @@ pipeline {
                         sh 'Handle the exception!'
                     }
                 }
-            }
-        }
-        stage('Test') {
-            agent {
-                    docker {
-                        image 'node:latest'
-                    }
-            }
-            steps {
-                sh 'ls'
-
-                sh 'docker pull jenkins/jenkins:lts-jdk11'
-                sh 'docker run --name jenkins-container -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11'
             }
         }
     }
