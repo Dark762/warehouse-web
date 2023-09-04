@@ -10,11 +10,6 @@ pipeline {
     }
     stages {
         stage('Checkout') {
-            agent {
-                    docker {
-                        image 'node:latest'
-                    }
-            }
             steps {
                 script {
                     try {
