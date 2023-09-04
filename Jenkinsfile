@@ -33,13 +33,12 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                agent {
+            agent {
                     docker {
                         image 'node:latest'
                     }
-                }
-
+            }
+            steps {
                 sh 'ls'
 
                 sh 'docker pull jenkins/jenkins:lts-jdk11'
