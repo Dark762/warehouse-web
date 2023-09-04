@@ -13,6 +13,11 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                agent {
+                    docker {
+                        image 'node:latest'
+                    }
+                }
                 script {
 					try {
 						script {
@@ -27,7 +32,14 @@ pipeline {
             }
         }
         stage('Test') {
+            
             steps {
+                agent {
+                    docker {
+                        image 'node:latest'
+                    }
+                }
+                
                 sh 'ls'
                 
                 sh 'docker pull jenkins/jenkins:lts-jdk11'
