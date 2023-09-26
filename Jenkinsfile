@@ -30,10 +30,11 @@ pipeline {
         }
         stage('docker build'){
             steps{
-                docker.withServer("tcp://192.168.18.130:4243"){
-                    docker.build("warehouse","./Dockerfile")
+                script{
+                    docker.withServer("tcp://192.168.18.130:4243"){
+                     docker.build("warehouse","./Dockerfile")
+                    }
                 }
-                
             }
         }
     }
