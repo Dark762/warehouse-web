@@ -1,7 +1,5 @@
 pipeline {
-    agent { dockerfile {
-            filename 'Dockerfile'
-        } }
+    agent none
     options {
         skipDefaultCheckout true
     }
@@ -12,6 +10,7 @@ pipeline {
     }
     stages {
         stage('Checkout') {
+            agent any
             steps {
                 script {
                     try {
@@ -31,6 +30,10 @@ pipeline {
             }
         }
         stage('docker build'){
+            agent {
+            dockerfile {
+                filename 'Dockerfile'
+            }
             steps{
                 script{
                     try {
