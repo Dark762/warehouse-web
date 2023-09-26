@@ -27,6 +27,7 @@ pipeline {
                 }
 
                 echo "hello"
+                sh "ls -a"
             }
         }
         stage('docker build'){
@@ -39,7 +40,7 @@ pipeline {
                 script{
                     try {
                         docker.withServer("tcp://192.168.18.130:4243"){
-                            docker.build("warehouse","./Dockerfile")
+                            docker.build("warehouse","Dockerfile")
                         }
                     }
                     catch (Exception e) {
