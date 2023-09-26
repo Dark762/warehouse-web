@@ -17,13 +17,15 @@ pipeline {
                             git branch: env.GIT_BRANCH, credentialsId: env.GIT_SOLUTION_CREDENTIALS, url: env.GIT_SOLUTION
                         }
 
-                        echo "hello"
+                        
                     } catch (Exception e) {
                         echo 'Exception occurred: ' + e.toString()
                         echo err.getMessage()
                         sh 'Handle the exception!'
                     }
                 }
+
+                echo "hello"
             }
         }
         stage('docker build'){
