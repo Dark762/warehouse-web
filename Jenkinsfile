@@ -1,5 +1,7 @@
 pipeline {
-    agent { dockerfile true }
+    agent { dockerfile {
+            filename 'Dockerfile'
+        } }
     options {
         skipDefaultCheckout true
     }
@@ -31,9 +33,17 @@ pipeline {
         stage('docker build'){
             steps{
                 script{
-                    docker.withServer("tcp://192.168.18.130:4243"){
-                     docker.build("warehouse","./Dockerfile")
+                    try {
+                        docker.withServer("tcp://192.168.18.130:4243"){
+                            docker.build("warehouse","./Dockerfile")
+                        }
                     }
+                    catch (Exception e) {
+                        echo 'Exception occurred: ' + e.toString()
+                        echo err.getMessage()
+                        sh 'Handle the exception!'
+                    }
+                   
                 }
             }
         }
