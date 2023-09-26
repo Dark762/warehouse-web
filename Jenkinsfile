@@ -39,7 +39,7 @@ pipeline {
             steps{
                 script{
                     try {
-                        docker.withServer("tcp://192.168.18.130:4243"){
+                        docker.withServer("tcp://192.168.18.130:4243","dockerAuth"){
                             docker.build("warehouse","dockerfile")
                         }
                     }
