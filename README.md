@@ -47,4 +47,27 @@ docker network create jenkins
 
   docker pull jenkins/jenkins:lts-jdk11
 
-  docker run --name jenkins-container -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+  docker run --name jenkins-container -d -p 0.0.0.0:8081:8080 -p 0.0.0.0:50001:50000 --privileged --network jenkins-network --env DOCKER_HOST=unix:///var/run/docker.sock --env DOCKER_CERT_PATH=/certs/client -v /usr/bin/docker:/usr/bin/docker -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v jenkins-docker-certs:/certs/client:ro jenkins/jenkins:lts-jdk11
+
+
+docker network create -d host --subnet=192.168.18.0/24 --gateway=192.168.18.1 jenkins-network
+
+docker network create --driver=bridge  --gateway=192.168.18.1 --subnet=192.168.18.0/24 -o "com.docker.network.bridge.host_binding_ipv4"="127.0.0.1" -o "com.docker.network.bridge.enable_icc": "true" -o "com.docker.network.bridge.enable_ip_masquerade": "true" jenkins-network
+
+  docker run \
+  --name jenkins-container \
+  --rm \
+  --detach \
+  --network jenkins-network \
+  --env DOCKER_HOST=unix:///var/run/docker.sock \
+  --env DOCKER_CERT_PATH=/certs/client \
+  --publish 8080:8080 \
+  --publish 50000:50000 \
+  --volume jenkins-data:/var/jenkins_home \
+  --volume jenkins-docker-certs:/certs/client:ro \
+  --volume /var/run/docker.sock:/var/run/docker.sock \
+  jenkins/jenkins:lts-jdk11
+
+
+
+  $ docker run --rm -ti --group-add $(stat -c '%g' /var/run/docker.sock) -v /var/run/docker.sock:/var/run/docker.sock jenkins-container
