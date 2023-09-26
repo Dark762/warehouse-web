@@ -33,14 +33,14 @@ pipeline {
         stage('docker build'){
             agent {
                 dockerfile {
-                    filename 'Dockerfile'
+                    filename 'dockerfile'
                 }
             }
             steps{
                 script{
                     try {
                         docker.withServer("tcp://192.168.18.130:4243"){
-                            docker.build("warehouse","Dockerfile")
+                            docker.build("warehouse","dockerfile")
                         }
                     }
                     catch (Exception e) {
