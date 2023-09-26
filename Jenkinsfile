@@ -31,8 +31,9 @@ pipeline {
         }
         stage('docker build'){
             agent {
-            dockerfile {
-                filename 'Dockerfile'
+                dockerfile {
+                    filename 'Dockerfile'
+                }
             }
             steps{
                 script{
